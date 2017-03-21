@@ -2,6 +2,7 @@
  * Created by johnn on 3/8/2017.
  */
 var button = document.getElementById("loginButton");
+var create = document.getElementById("createAccountButton");
 
 /*
     When button is clicked it calls the functions below. Essentially,
@@ -16,6 +17,15 @@ button.onclick = function(){
     }
 };
 
+create.onclick = function(){
+	var username = document.getElementById("loginUsername");
+	var password = document.getElementById("loginPassword");
+	
+	if(checkCreateAccount(username, password) ){
+		createProcess(username, password);
+	}
+	
+}
 /*
     Checks if the username and password combination are in the database.
     First checks username. If it is in the system, then checks the entered password.
@@ -55,14 +65,62 @@ function checkUsername(username){
  */
 function checkPassword(username, password){
 
-    // cant do username.password in this case sadly.
+    // can't do username.password in this case sadly.
     return password == "Hollow13"; // the password associated with johnny35 account info.
 
 }
+
+function checkCreateAccount(username, password){
+	if(checkCreateUsername(username.value)){
+        username.style.backgroundColor = "#A0FFA0";
+
+        if(checkCreatePassword(password.value)){
+            password.style.backgroundColor = "#A0FFA0";
+            return true;
+        } else {
+            password.style.backgroundColor = "#F3A0A0";
+        }
+
+    } else {
+        username.style.backgroundColor = "#F3A0A0";
+    }
+
+    return false;
+}
+
+function checkCreateUsername(username){
+
+	var goodEmail = "bob@air.com"; // temporary email.
+	/*  Checks if username is an email address or not  */
+	
+	return username == goodEmail
+}
+
+/*
+ * Checks to make sure password follows regulations.
+ */
+function checkCreatePassword(password){
+		
+	if(password.length>=8 && /[A-Z]/.test(password)  && /[a-z]/.test(password) && /[0-9]/.test(password)){
+		alert("Password is valid");
+		return true;
+	}else{
+		alert("Password is NOT valid.  Please fix: More than 8 characters, 1 upper, 1 lower, 1 number");
+		return false;
+	}	
+}
+
 
 /*
     Performs the necessary log in steps to access the account. Not sure what to put here temporarily.
  */
 function loginProcess(username, password){
     alert("Logged In!");
+}
+
+/*  
+ 	Performs the necessary steps to create an account.  Temporarily just alerts that function has been accessed.
+ */
+function createProcess(username, password){
+	alert("Created  Account!");
 }
