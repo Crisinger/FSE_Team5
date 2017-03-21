@@ -17,6 +17,11 @@ button.onclick = function(){
     }
 };
 
+/*
+ * When button is clicked calls the functions below.  Essentially, it checks the
+ * username and password to see if they are valid suggestions for a new account.
+ * If both are valid then creates the account - otherwise does not.
+ */
 create.onclick = function(){
 	var username = document.getElementById("loginUsername");
 	var password = document.getElementById("loginPassword");
@@ -70,6 +75,9 @@ function checkPassword(username, password){
 
 }
 
+/*
+ * Checking hierarchy with color showing when username and password combos are valid
+ */
 function checkCreateAccount(username, password){
 	if(checkCreateUsername(username.value)){
         username.style.backgroundColor = "#A0FFA0";
@@ -88,6 +96,9 @@ function checkCreateAccount(username, password){
     return false;
 }
 
+/*
+ * Checks to see if the username is a valid email address.  If it is returns true, if not returns false;
+ */
 function checkCreateUsername(username){
 
 	var goodEmail = "bob@air.com"; // temporary email.
@@ -115,6 +126,9 @@ function checkCreatePassword(password){
     Performs the necessary log in steps to access the account. Not sure what to put here temporarily.
  */
 function loginProcess(username, password){
+	
+	// Needs a section to check this info against database for duplicate possibilitiy//
+	
     alert("Logged In!");
 }
 
